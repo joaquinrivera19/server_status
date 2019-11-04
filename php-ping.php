@@ -163,11 +163,18 @@ foreach ($servers as $name => $info) {
 <?php
 /* Misc at the bottom */
 function test($server) {
-    $socket = @fsockopen($server['ip'], $server['port'], $errorNo, $errorStr, 3);
-    if ($errorNo == 0) {
-        return true;
-    } else {
-        return false;
+    //$socket = @fsockopen($server['ip'], $server['port'], $errorNo, $errorStr, 3);
+    //if ($errorNo == 0) {
+    //   return true;
+    //} else {
+    //    return false;
+    //}
+    $fsock = @fsockopen($server['ip'], $server['port'], $errorNo, $errorStr, 3);
+    if ( ! $fsock )
+    {
+        return FALSE;
+    }else{
+        return TRUE;
     }
 }
 
